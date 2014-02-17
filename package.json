@@ -1,0 +1,35 @@
+{
+    "name": "random-js",
+    "description": "A mathematically correct random number generator library for JavaScript.",
+    "version": "1.0.0",
+    "author": {
+        "name": "Cameron Kenneth Knight",
+        "email": "ckknight@gmail.com"
+    },
+    "keywords": [
+        "random"
+    ],
+    "homepage": "https://github.com/ckknight/random-js",
+    "bugs": "https://github.com/ckknight/random-js/issues",
+    "license": "MIT",
+    "repository": "git://github.com/ckknight/random-js",
+    "main": "lib/random",
+    "readmeFilename": "README.md",
+    "devDependencies": {
+        "karma-script-launcher": "~0.1.0",
+        "karma-chrome-launcher": "~0.1.2",
+        "karma-firefox-launcher": "~0.1.3",
+        "karma-html2js-preprocessor": "~0.1.0",
+        "karma-jasmine": "~0.1.5",
+        "karma-coffee-preprocessor": "~0.1.2",
+        "requirejs": "~2.1.10",
+        "karma-requirejs": "~0.2.1",
+        "karma-phantomjs-launcher": "~0.1.1",
+        "karma": "~0.10.9",
+        "karma-coverage": "~0.1.5"
+    },
+    "scripts": {
+        "test": "jasmine-node lib/random.js spec/",
+        "uglify": "uglifyjs lib/random.js -o lib/random.min.js -m"
+    }
+}

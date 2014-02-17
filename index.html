@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OMG Random</title>
+  </head>
+  <body>
+    <script src="random.js"></script>
+
+    <script>
+      var seedArray = [1,2,3,4,5,6,7,8].map(function () {
+        return (Math.random() * 0x100000000) >>> 0;
+      });
+      var mt1 = RANDOM.engines.mt19937ASM().seedWithArray(seedArray);
+      var mt2 = RANDOM.engines.mt19937().seedWithArray(seedArray);
+      function testSameness(count) {
+        for (var i = 0; i < count; ++i) {
+          var actualAsm = mt1();
+          var actualNonAsm = mt2();
+          if (actualAsm !== actualNonAsm) {
+            console.log("difference found at #" + i + ". ASM = " + actualAsm + ". Non-ASM = " + actualNonAsm);
+            return;
+          }
+        }
+        console.log("tested as same");
+      }
+      testSameness(100000);
+      function timer(callback) {
+        var start = performance.now();
+        callback();
+        var end = performance.now();
+        return end - start;
+      }
+      function testAsm() {
+        for (var i = 0; i < 0x1000; ++i) {
+          mt1();
+        }
+      }
+      function testNonAsm() {
+        for (var i = 0; i < 0x1000; ++i) {
+          mt2();
+        }
+      }
+      function runAsync(times, callback, done) {
+        if (times <= 0) {
+          done();
+        } else {
+          setTimeout(function () {
+            callback();
+            runAsync(times - 1, callback, done);
+          }, 0);
+        }
+      }
+      var asmTime = 0;
+      var nonAsmTime = 0;
+      runAsync(1000, function () {
+        asmTime += timer(testAsm);
+        nonAsmTime += timer(testNonAsm);
+      }, function () {
+        console.log(asmTime, "<-- asm");
+        console.log(nonAsmTime, "<-- non-asm");
+      });
+    </script>
+  </body>
+</html>
