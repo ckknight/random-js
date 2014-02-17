@@ -31,5 +31,8 @@
     "scripts": {
         "test": "jasmine-node lib/random.js spec/",
         "uglify": "uglifyjs lib/random.js -o lib/random.min.js -m"
+    },
+    "testling": {
+        "files": "spec/*.js"
     }
 }
