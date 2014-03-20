@@ -26,7 +26,7 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      'random.js': 'coverage'
+      'lib/random.js': 'coverage'
     },
 
 
