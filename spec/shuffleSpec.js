@@ -42,5 +42,25 @@
         expect(actual).toEqual(expected);
       });
     });
+
+    describe("with an empty array", function () {
+      it("returns a new empty array", function () {
+        var engine = function () {};
+        var array = [];
+
+        var actual = Random.shuffle(engine, array);
+
+        expect(actual).toEqual([]);
+        expect(actual).not.toBe(array);
+      });
+
+      it("does not call the engine", function () {
+        var engine = jasmine.createSpy();
+
+        Random.shuffle(engine, []);
+
+        expect(engine).not.toHaveBeenCalled();
+      });
+    });
   });
 }(typeof module !== "undefined" ? require("../lib/random") : Random));
