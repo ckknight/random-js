@@ -15,9 +15,10 @@
       var array = ["a", "b", "c", "d", "e"];
       var expected = ["e", "b", "a", "d", "c"];
 
-      var actual = Random.shuffle(engine, ["a", "b", "c", "d", "e"]);
+      var actual = Random.shuffle(engine, array);
 
       expect(actual).toEqual(expected);
+      expect(actual).toBe(array);
     });
 
     describe("with downTo", function () {
@@ -37,21 +38,22 @@
         var array = ["a", "b", "c", "d", "e"];
         var expected = ["a", "b", "e", "d", "c"];
 
-        var actual = Random.shuffle(engine, ["a", "b", "c", "d", "e"], downTo);
+        var actual = Random.shuffle(engine, array, downTo);
 
         expect(actual).toEqual(expected);
+        expect(actual).toBe(array);
       });
     });
 
     describe("with an empty array", function () {
-      it("returns a new empty array", function () {
+      it("returns the same empty array", function () {
         var engine = function () {};
         var array = [];
 
         var actual = Random.shuffle(engine, array);
 
         expect(actual).toEqual([]);
-        expect(actual).not.toBe(array);
+        expect(actual).toBe(array);
       });
 
       it("does not call the engine", function () {
