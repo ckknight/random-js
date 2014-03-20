@@ -171,7 +171,7 @@ Download `random.min.js` and place it in your project, then add it as a `<script
 
     <script src="lib/random.min.js"></script>
     <script>
-      var Random = require("random-js");
+      // Random is now available as a global (on the window object)
       var random = new Random(Random.engines.mt19937().autoSeed());
       alert("Random value from 1 to 100: " + random.integer(1, 100));
     </script>
