@@ -206,6 +206,7 @@ You can add your own methods to `Random` instances, as such:
         return "woof!";
       }
     };
+    random.bark(); //=> "arf!" or "woof!"
 
 This is the recommended approach, especially if you only use one instance of `Random`.
 
@@ -224,6 +225,7 @@ Or you could even make your own subclass of Random:
       }
     }
     var random = new MyRandom();
+    random.mood(); //=> "Happy", "Content", or "Sad"
 
 ## Testing
 
