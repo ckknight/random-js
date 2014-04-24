@@ -1,3 +1,7 @@
+# 1.0.3 (2014-04-23)
+
+- `Random` no longer needs to be called with new, allowing `var r = require('random-js')()`
+
 # 1.0.2 (2014-03-20)
 
 - Even if `shuffle` receives an empty array, it should return that same array.

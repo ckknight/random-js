@@ -118,6 +118,9 @@ There is an alternate API which may be easier to use, but may be less performant
     var r = new Random(Random.engines.mt19937().seedWithArray([0x12345678, 0x90abcdef]));
     var value = r.integer(0, 99);
 
+    r = new Random(); // same as new Random(Random.engines.nativeMath)
+    r = Random(); // same as above, `new` isn't required.
+
 This abstracts the concepts of engines and distributions.
 
  * `r.integer(min, max)`: Produce an integer within the inclusive range [`min`, `max`]. `min` can be at its minimum -9007199254740992 (2 ** 53). `max` can be at its maximum 9007199254740992 (2 ** 53). The special number `-0` is never returned.
@@ -146,6 +149,11 @@ In your project, run the following command:
 
 In your code:
 
+    var random = require("random-js")(); // uses the nativeMath engine
+    var value = random.integer(1, 100);
+
+Or to have more control:
+
     var Random = require("random-js");
     var random = new Random(Random.engines.mt19937().autoSeed());
     var value = random.integer(1, 100);
@@ -161,6 +169,10 @@ Download `random.min.js` and place it in your project, then use one of the follo
       return new Random(Random.engines.mt19937().autoSeed());
     });
 
+    define(function (require) {
+      return require("random")(); // uses the nativeMath engine
+    });
+
     define(["random"], function (Random) {
       return new Random(Random.engines.mt19937().autoSeed());
     });
@@ -172,7 +184,7 @@ Download `random.min.js` and place it in your project, then add it as a `<script
     <script src="lib/random.min.js"></script>
     <script>
       // Random is now available as a global (on the window object)
-      var random = new Random(Random.engines.mt19937().autoSeed());
+      var random = new Random();
       alert("Random value from 1 to 100: " + random.integer(1, 100));
     </script>
 

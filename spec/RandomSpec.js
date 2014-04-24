@@ -2,8 +2,10 @@
   var Random = typeof module !== "undefined" ? require("../lib/random") : root.Random;
   describe("Random", function () {
     describe("constructor", function () {
-      it("throws a TypeError if not called with new", function () {
-        expect(Random).toThrow(new TypeError("Expected to be called with new"));
+      it("returns a Random if called without new", function () {
+        var random = Random();
+
+        expect(random instanceof Random).toBe(true);
       });
 
       describe("when passed a non-function", function () {
