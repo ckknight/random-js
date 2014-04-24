@@ -151,11 +151,13 @@
         it("calls Random.pick", function () {
           var array = ["a", "b", "c"];
           var dummy = "d";
+          var begin = 1;
+          var end = -1;
           spyOn(Random, "pick").andReturn(dummy);
 
-          var actual = random.pick(array);
+          var actual = random.pick(array, begin, end);
 
-          expect(Random.pick).toHaveBeenCalledWith(random.engine, array);
+          expect(Random.pick).toHaveBeenCalledWith(random.engine, array, begin, end);
           expect(actual).toBe(dummy);
         });
       });

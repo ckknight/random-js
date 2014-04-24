@@ -75,8 +75,8 @@ Random.js also provides a set of methods for producing useful data from an engin
  * `Random.bool()(engine)`: Produce a boolean with a 50% chance of it being `true`.
  * `Random.bool(percentage)(engine)`: Produce a boolean with the specified chance causing it to be `true`.
  * `Random.bool(numerator, denominator)(engine)`: Produce a boolean with `numerator`/`denominator` chance of it being true.
- * `Random.pick(engine, array)`: Return a random value within the provided `array`.
- * `Random.picker(array)(engine)`: Same as `Random.pick(engine, array)`.
+ * `Random.pick(engine, array[, begin[, end]])`: Return a random value within the provided `array` within the sliced bounds of `begin` and `end`.
+ * `Random.picker(array[, begin[, end]])(engine)`: Same as `Random.pick(engine, array, begin, end)`.
  * `Random.shuffle(engine, array)`: Shuffle the provided `array` (in-place). Similar to `.sort()`.
  * `Random.sample(engine, population, sampleSize)`: From the `population` array, produce an array with `sampleSize` elements that are randomly chosen without repeats.
  * `Random.die(sideCount)(engine)`: Same as `Random.integer(1, sideCount)(engine)`
@@ -128,7 +128,7 @@ This abstracts the concepts of engines and distributions.
  * `r.bool()`: Produce a boolean with a 50% chance of it being `true`.
  * `r.bool(percentage)`: Produce a boolean with the specified chance causing it to be `true`.
  * `r.bool(numerator, denominator)`: Produce a boolean with `numerator`/`denominator` chance of it being true.
- * `r.pick(array)`: Return a random value within the provided `array`.
+ * `r.pick(array[, begin[, end]])`: Return a random value within the provided `array` within the sliced bounds of `begin` and `end`.
  * `r.shuffle(array)`: Shuffle the provided `array` (in-place). Similar to `.sort()`.
  * `r.sample(population, sampleSize)`: From the `population` array, produce an array with `sampleSize` elements that are randomly chosen without repeats.
  * `r.die(sideCount)`: Same as `r.integer(1, sideCount)`

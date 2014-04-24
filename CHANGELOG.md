@@ -1,6 +1,7 @@
 # 1.0.3 (2014-04-23)
 
 - `Random` no longer needs to be called with new, allowing `var r = require('random-js')()`
+- Add `begin` and `end` arguments to `pick` and `picker`.
 
 # 1.0.2 (2014-03-20)
 
