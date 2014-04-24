@@ -194,6 +194,37 @@ If you use [Bower](http://bower.io) for your client-side package management, Ran
 
     bower install random
 
+## Extending
+
+You can add your own methods to `Random` instances, as such:
+
+    var random = new Random();
+    random.bark = function () {
+      if (this.bool()) {
+        return "arf!";
+      } else {
+        return "woof!";
+      }
+    };
+
+This is the recommended approach, especially if you only use one instance of `Random`.
+
+Or you could even make your own subclass of Random:
+
+    function MyRandom(engine) {
+      return Random.call(this, engine);
+    }
+    MyRandom.prototype = Object.create(Random.prototype);
+    MyRandom.prototype.constructor = MyRandom;
+    MyRandom.prototype.mood = function () {
+      switch (this.integer(0, 2)) {
+        case 0: return "Happy";
+        case 1: return "Content";
+        case 2: return "Sad";
+      }
+    }
+    var random = new MyRandom();
+
 ## Testing
 
 All the code in Random.js is fully tested and covered using `jasmine`.
