@@ -1,5 +1,20 @@
 (function (Random) {
   describe("hex", function () {
+    var owns = Object.prototype.hasOwnProperty;
+
+    function countUnique(string) {
+      var set = {};
+      var count = 0;
+      var i = string.length;
+      while (i--) {
+        var c = string.charAt(i);
+        if (!owns.call(set, c)) {
+          set[c] = true;
+          ++count;
+        }
+      }
+      return count;
+    }
     [{
       upper: true,
       pool: "0123456789ABCDEF"
@@ -11,15 +26,17 @@
       var pool = o.pool;
 
       describe("when upper = " + upper, function () {
-        it("returns the result of string with pool = '" + pool + "'", function () {
+        it("returns hex strings of the requested length", function () {
           var length = 1337;
           var dummy = function () {};
+          var regex = new RegExp("^[" + pool + "]{" + length + "}$");
           spyOn(Random, "string").andReturn(dummy);
 
-          var actual = Random.hex(upper);
+          var hexer = Random.hex(upper);
+          var actual = hexer(Random.engines.nativeMath, length);
 
-          expect(actual).toBe(dummy);
-          expect(Random.string).toHaveBeenCalledWith(pool);
+          expect(actual).toMatch(regex);
+          expect(countUnique(actual)).toBe(pool.length);
         });
       });
     });

@@ -1,6 +1,7 @@
 # 1.0.4 (2014-04-23)
 
 - `string('')` now throws an error
+- `hex(upper)` now returns a cached function, for efficiency.
 
 # 1.0.3 (2014-04-23)
 
