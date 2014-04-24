@@ -1,3 +1,7 @@
+# 1.0.4 (2014-04-23)
+
+- `string('')` now throws an error
+
 # 1.0.3 (2014-04-23)
 
 - `Random` no longer needs to be called with new, allowing `var r = require('random-js')()`

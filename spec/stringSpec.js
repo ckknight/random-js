@@ -50,5 +50,13 @@
         expect(actual).toBe(expected);
       });
     });
+
+    describe("with pool = ''", function () {
+      it("throws an error", function () {
+        expect(function () {
+          Random.string("");
+        }).toThrow(new Error("Expected pool not to be an empty string"));
+      });
+    });
   });
 }(typeof module !== "undefined" ? require("../lib/random") : Random));
