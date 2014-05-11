@@ -1,6 +1,6 @@
 (function (Random) {
   describe("engines.browserCrypto", function () {
-    if (typeof crypto === "undefined" || typeof crypto.getRandomValues !== "function" || typeof Uint32Array !== "function") {
+    if (typeof crypto === "undefined" || typeof crypto.getRandomValues !== "function" || typeof Int32Array !== "function") {
       it("is null due to lack of support", function () {
         expect(Random.engines.browserCrypto).toBe(null);
       });
@@ -11,14 +11,14 @@
         }
       };
 
-      it("calls crypto.getRandomValues on a 128-length Uint32Array", function () {
+      it("calls crypto.getRandomValues on a 128-length Int32Array", function () {
         spyOn(crypto, "getRandomValues").andCallThrough();
 
         Random.engines.browserCrypto();
 
         expect(crypto.getRandomValues).toHaveBeenCalled();
         var arg = crypto.getRandomValues.mostRecentCall.args[0];
-        expect(arg instanceof Uint32Array).toBe(true);
+        expect(arg instanceof Int32Array).toBe(true);
         expect(arg.length).toBe(128);
         discard(127);
       });

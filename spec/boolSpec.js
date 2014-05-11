@@ -48,25 +48,27 @@
       });
 
       describe("when passed a number that only requires 32 bits of randomness", function () {
-        it("returns false if the engine passes in a value >= than the percentage * " + 0x100000000, function () {
+        it("returns false if int32 passes in a value >= than the percentage * " + 0x100000000, function () {
           var nextValue = 0;
           var percentage = 0.125;
+          spyOn(Random, "int32").andReturn(Math.ceil(percentage * 0x100000000) - 0x80000000);
           var distribution = Random.bool(percentage);
 
           var actual = distribution(function () {
-            return percentage * 0x100000000;
+            return 0;
           });
 
           expect(actual).toBe(false);
         });
 
-        it("returns true if the engine passes in a value < than the percentage * " + 0x100000000, function () {
+        it("returns true if uint53 passes in a value < than the percentage * " + 0x100000000, function () {
           var nextValue = 0;
           var percentage = 0.125;
+          spyOn(Random, "int32").andReturn(Math.floor(percentage * 0x100000000) - 0x80000001);
           var distribution = Random.bool(percentage);
 
           var actual = distribution(function () {
-            return (percentage * 0x100000000) - 1;
+            return 0;
           });
 
           expect(actual).toBe(true);

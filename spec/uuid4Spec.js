@@ -3,7 +3,7 @@
     function makeEngine(input) {
       var index = 0;
       return function () {
-        return input[index++];
+        return input[index++] | 0;
       };
     }
 

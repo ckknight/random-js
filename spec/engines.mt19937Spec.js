@@ -57,7 +57,20 @@
       return result;
     }
 
+    function map(array, callback) {
+      return times(array.length, function (i) {
+        return callback(array[i]);
+      });
+    }
+
+    function toInt32Array(array) {
+      return map(array, function (x) {
+        return x | 0;
+      });
+    }
+
     function test(seed, expectedValues, discard) {
+      expectedValues = toInt32Array(expectedValues);
       it("passes tests for seed = " + seed, function () {
         var mt = Random.engines.mt19937();
         mt.seed(seed);
@@ -70,6 +83,7 @@
     }
 
     function testArray(seed, expectedValues, discard) {
+      expectedValues = toInt32Array(expectedValues);
       it("passes tests for seed = [" + seed.join(", ") + "]", function () {
         var mt = Random.engines.mt19937();
         mt.seedWithArray(seed);

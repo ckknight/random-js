@@ -2,6 +2,9 @@
 
 - `string('')` now throws an error
 - `hex(upper)` now returns a cached function, for efficiency.
+- add `int32()`, which returns an integer from `-0x80000000` to `0x7fffffff`.
+- performance enhancements
+- add benchmark suite, covers engines, integer, bool, and real.
 
 # 1.0.3 (2014-04-23)
 

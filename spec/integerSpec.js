@@ -252,6 +252,14 @@
     testUniformDistribution(-0x1fffffffffffff, 0xe7ab3bddafc0e, 1000);
     testUniformDistribution(-0xe7ab3bddafc0d, 0x20000000000000, 1000);
 
+    it("returns int32 if " + -0x80000000 + " and " + 0x7fffffff + " are passed in", function () {
+      var expected = Random.int32;
+
+      var actual = Random.integer(-0x80000000, 0x7fffffff);
+
+      expect(actual).toBe(expected);
+    });
+
     it("returns uint32 if 0 and " + 0xffffffff + " are passed in", function () {
       var expected = Random.uint32;
 
@@ -335,7 +343,7 @@
         if (index >= input.length) {
           return 0;
         } else {
-          return input[index++];
+          return input[index++] | 0;
         }
       };
     }

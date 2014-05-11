@@ -11,13 +11,13 @@
       Math.random = oldRandom;
     });
 
-    it("returns the result of Math.random() converted to a UInt32", function () {
+    it("returns the result of Math.random() converted to a Int32", function () {
       var expected = 0xdeadbeef;
       Math.random.andReturn(expected / 0x100000000);
 
       var actual = nativeMath();
 
-      expect(actual).toBe(expected);
+      expect(actual).toBe(expected | 0);
     });
 
     it("normalizes to an integer", function () {
@@ -26,7 +26,7 @@
 
       var actual = nativeMath();
 
-      expect(actual).toBe(expected);
+      expect(actual).toBe(expected | 0);
     });
   });
 }(typeof module !== "undefined" ? require("../lib/random") : Random));
