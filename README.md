@@ -23,7 +23,7 @@ Also, and most crucially, most developers tend to use improper and biased logic 
 Random.js provides a set of "engines" for producing random integers, which consistently provide values within [0, 4294967295], i.e. 32 bits of randomness.
 
  * `nativeMath`: Utilizes [`Math.random()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) and converts its result to an unsigned integer. This is appropriate to use if you do not care for a deterministic implementation. Based on the implementation (which is hidden to you as a developer), the period may be shorter than expected and start repeating itself.
- * `browserCrypto`: Utilizes [`crypto.getRandomValues(Uint32Array)`](https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues). Only supported on newer browsers, but promises cryptographically random numbers.
+ * `browserCrypto`: Utilizes [`crypto.getRandomValues(Int32Array)`](https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues). Only supported on newer browsers, but promises cryptographically random numbers.
  * `mt19937()`: An implementation of the [Mersenne Twister](http://en.wikipedia.org/wiki/Mersenne_twister) algorithm. Not cryptographically secure, but its results are repeatable. Must be seeded with a single integer or an array of integers or call `.autoSeed()` to automatically seed initial data. Guaranteed to produce consistent results across all JavaScript implementations assuming the same seed.
 
 One is also free to implement their own engine as long as it returns 32-bit integers, either signed or unsigned.
@@ -86,6 +86,7 @@ Random.js also provides a set of methods for producing useful data from an engin
  * `Random.string(pool)(engine, length)`: Produce a random string using the provided string `pool` as the possible characters to choose from of length `length`.
  * `Random.hex()(engine, length)` or `Random.hex(false)(engine, length)`: Produce a random string comprised of numbers or the characters `abcdef` of length `length`.
  * `Random.hex(true)(engine, length)`: Produce a random string comprised of numbers or the characters `ABCDEF` of length `length`.
+ * `Random.date(start, end)(engine)`: Produce a random `Date` within the inclusive range of [`start`, `end`]. `start` and `end` must both be `Date`s.
 
 An example of using `integer` would be as such:
 
@@ -138,6 +139,7 @@ This abstracts the concepts of engines and distributions.
  * `r.string(length, pool)`: Produce a random string using the provided string `pool` as the possible characters to choose from of length `length`.
  * `r.hex(length)` or `r.hex(length, false)`: Produce a random string comprised of numbers or the characters `abcdef` of length `length`.
  * `r.hex(length, true)`: Produce a random string comprised of numbers or the characters `ABCDEF` of length `length`.
+ * `r.date(start, end)`: Produce a random `Date` within the inclusive range of [`start`, `end`]. `start` and `end` must both be `Date`s.
 
 ## Usage
 

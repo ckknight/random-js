@@ -264,7 +264,23 @@
         });
       });
 
-      ["uint32", "uint53", "uint53Full", "int53", "int53Full", "realZeroToOneExclusive", "realZeroToOneInclusive"].forEach(function (method) {
+      describe("date", function () {
+        it("calls Random.date", function () {
+          var now = new Date();
+          var later = new Date(now.getTime() + 86400);
+          var dummy = new Date(now.getTime() + 12345);
+          var spy = jasmine.createSpy().andReturn(dummy);
+          spyOn(Random, "date").andReturn(spy);
+
+          var actual = random.date(now, later);
+
+          expect(Random.date).toHaveBeenCalledWith(now, later);
+          expect(spy).toHaveBeenCalledWith(random.engine);
+          expect(actual).toBe(dummy);
+        });
+      });
+
+      ["int32", "uint32", "uint53", "uint53Full", "int53", "int53Full", "realZeroToOneExclusive", "realZeroToOneInclusive"].forEach(function (method) {
         describe(method, function () {
           it("calls Random." + method, function () {
             var dummy = 1234;
