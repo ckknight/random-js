@@ -16,7 +16,6 @@
   "main": "lib/random",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "benchmark": "^1.0.0",
     "karma": "~0.10.9",
     "karma-chrome-launcher": "~0.1.2",
     "karma-coffee-preprocessor": "~0.1.2",
@@ -35,5 +34,9 @@
   },
   "testling": {
     "files": "spec/*.js"
+  },
+  "optionalDependencies": {
+    "benchmark": "^1.0.0",
+    "microtime": "^0.5.1"
   }
 }
