@@ -27,7 +27,6 @@
     "karma-phantomjs-launcher": "~0.1.1",
     "karma-requirejs": "~0.2.1",
     "karma-script-launcher": "~0.1.0",
-    "microtime": "^0.5.1",
     "requirejs": "~2.1.10"
   },
   "scripts": {
