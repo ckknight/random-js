@@ -35,7 +35,7 @@
         var actual = Random.sample(engine, array, sampleSize);
 
         expect(actual).toEqual(expected);
-        expect(Random.shuffle).toHaveBeenCalledWith(engine, array, array.length - sampleSize);
+        expect(Random.shuffle).toHaveBeenCalledWith(engine, array, array.length - sampleSize - 1);
         expect(Random.shuffle.mostRecentCall.args[1]).not.toBe(array);
       });
     });
