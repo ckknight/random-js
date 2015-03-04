@@ -1,3 +1,9 @@
+# 1.0.5 (2015-03-03)
+
+- `sample()` results are no longer biased toward the final element.
+- `discard(count)` on the `mt19937` engine properly works when count is less than 625
+- Clarify that the built-in engines return signed 32-bit integers (not unsigned).
+
 # 1.0.4 (2014-05-11)
 
 - `string('')` now throws an error
