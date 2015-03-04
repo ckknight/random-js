@@ -22,7 +22,7 @@ Also, and most crucially, most developers tend to use improper and biased logic 
 
 Random.js provides a set of "engines" for producing random integers, which consistently provide values within [0, 4294967295], i.e. 32 bits of randomness.
 
- * `nativeMath`: Utilizes [`Math.random()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) and converts its result to an unsigned integer. This is appropriate to use if you do not care for a deterministic implementation. Based on the implementation (which is hidden to you as a developer), the period may be shorter than expected and start repeating itself.
+ * `nativeMath`: Utilizes [`Math.random()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) and converts its result to a signed integer. This is appropriate to use if you do not care for a deterministic implementation. Based on the implementation (which is hidden to you as a developer), the period may be shorter than expected and start repeating itself.
  * `browserCrypto`: Utilizes [`crypto.getRandomValues(Int32Array)`](https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues). Only supported on newer browsers, but promises cryptographically random numbers.
  * `mt19937()`: An implementation of the [Mersenne Twister](http://en.wikipedia.org/wiki/Mersenne_twister) algorithm. Not cryptographically secure, but its results are repeatable. Must be seeded with a single integer or an array of integers or call `.autoSeed()` to automatically seed initial data. Guaranteed to produce consistent results across all JavaScript implementations assuming the same seed.
 
@@ -60,7 +60,7 @@ Random.js provides a series of distributions to alleviate this.
 
 Assuming one has done `var mt = Random.engines.mt19937()`:
 
- * `mt()`: Produce a 32-bit unsigned integer.
+ * `mt()`: Produce a 32-bit signed integer.
  * `mt.seed(value)`: Seed the twister with an initial 32-bit integer.
  * `mt.seedWithArray(array)`: Seed the twister with an array of 32-bit integers.
  * `mt.autoSeed()`: Seed the twister with automatic information. This uses the current Date and other entropy sources.
@@ -102,7 +102,7 @@ An example of using `integer` would be as such:
 Producing a distribution should be considered a cheap operation, but producing a new Mersenne Twister can be expensive.
 
 An example of producing a random SHA1 hash:
-	
+
 	// using essentially Math.random()
 	var engine = Random.engines.nativeMath;
 	// lower-case Hex string distribution
