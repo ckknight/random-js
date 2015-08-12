@@ -28,6 +28,19 @@
       });
     });
 
+    describe("method: getIndex", function() {
+      it("returns the current index", function() {
+        var mt = Random.engines.mt19937();
+        mt.seedWithArray([0x1234, 0x2345]);
+
+        for (var i = 0; i < 100; i++) {
+          expect(mt.getIndex()).toBe(i);
+          mt();
+          expect(mt.getIndex()).toBe(i+1);
+        }
+      });
+    });
+
     describe("method: autoSeed", function () {
       it("returns the same engine", function () {
         var mt = Random.engines.mt19937();
