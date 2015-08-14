@@ -52,14 +52,17 @@
         var mt = Random.engines.mt19937();
         mt.seedWithArray([0x1234, 0x2345]);
 
+        mt.discard(1000);
+        expect(mt.getUseCount()).toBe(1000);
+
         for (var i = 0; i < 1000; i++) {
-          expect(mt.getUseCount()).toBe(i);
+          expect(mt.getUseCount()).toBe(1000 + i);
           mt.discard(1);
-          expect(mt.getUseCount()).toBe(i+1);
+          expect(mt.getUseCount()).toBe(1001 + i);
         }
 
         mt.discard(25);
-        expect(mt.getUseCount()).toBe(1025);
+        expect(mt.getUseCount()).toBe(2025);
       });
 
       it("can be used to resume from a previous chain with the same seed", function() {
