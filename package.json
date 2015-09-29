@@ -1,7 +1,7 @@
 {
   "name": "random-js",
   "description": "A mathematically correct random number generator library for JavaScript.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": {
     "name": "Cameron Kenneth Knight",
     "email": "ckknight@gmail.com"
@@ -34,9 +34,5 @@
   },
   "testling": {
     "files": "spec/*.js"
-  },
-  "optionalDependencies": {
-    "benchmark": "^1.0.0",
-    "microtime": "^0.5.1"
   }
 }

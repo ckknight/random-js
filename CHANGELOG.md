@@ -1,3 +1,7 @@
+# 1.0.6 (2015-09-28)
+
+- removed the optionalDependencies in package.json "benchmark" and "microtime".
+
 # 1.0.5 (2015-03-03)
 
 - `sample()` results are no longer biased toward the final element.
