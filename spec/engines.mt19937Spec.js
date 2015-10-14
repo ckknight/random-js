@@ -28,6 +28,62 @@
       });
     });
 
+    describe("method: getUseCount", function() {
+      it("starts at zero", function() {
+        var mt = Random.engines.mt19937();
+        expect(mt.getUseCount()).toBe(0);
+
+        mt.seedWithArray([0x1234, 0x2345]);
+        expect(mt.getUseCount()).toBe(0);
+      });
+
+      it("increments with each generated random number", function() {
+        var mt = Random.engines.mt19937();
+        mt.seedWithArray([0x1234, 0x2345]);
+
+        for (var i = 0; i < 1000; i++) {
+          expect(mt.getUseCount()).toBe(i);
+          mt();
+          expect(mt.getUseCount()).toBe(i+1);
+        }
+      });
+
+      it("increments with each discarded random number", function() {
+        var mt = Random.engines.mt19937();
+        mt.seedWithArray([0x1234, 0x2345]);
+
+        mt.discard(1000);
+        expect(mt.getUseCount()).toBe(1000);
+
+        for (var i = 0; i < 1000; i++) {
+          expect(mt.getUseCount()).toBe(1000 + i);
+          mt.discard(1);
+          expect(mt.getUseCount()).toBe(1001 + i);
+        }
+
+        mt.discard(25);
+        expect(mt.getUseCount()).toBe(2025);
+      });
+
+      it("can be used to resume from a previous chain with the same seed", function() {
+        var mt = Random.engines.mt19937();
+        mt.seedWithArray([0x1234, 0x2345]);
+
+        for (var i = 0; i < 1000; i++) {
+          mt();
+        }
+        var mtUseCount = mt.getUseCount();
+        expect(mtUseCount).toBe(1000);
+
+        var newMt = Random.engines.mt19937();
+        newMt.seedWithArray([0x1234, 0x2345]);
+
+        newMt.discard(mtUseCount);
+
+        expect(newMt()).toBe(mt());
+      });
+    });
+
     describe("method: autoSeed", function () {
       it("returns the same engine", function () {
         var mt = Random.engines.mt19937();
