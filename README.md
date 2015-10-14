@@ -65,6 +65,9 @@ Assuming one has done `var mt = Random.engines.mt19937()`:
  * `mt.seedWithArray(array)`: Seed the twister with an array of 32-bit integers.
  * `mt.autoSeed()`: Seed the twister with automatic information. This uses the current Date and other entropy sources.
  * `mt.discard(count)`: Discard `count` random values. More efficient than running `mt()` repeatedly.
+ * `mt.getUseCount()`: Return the number of times the engine has been used plus the number of discarded values.
+
+One can seed a Mersenne Twister with the same value (`mt.seed(value)`) or values (`mt.seedWithArray(array)`) and discard the number of uses (`mt.getUseCount()`) to achieve the exact same state.
 
 ### Distributions
 

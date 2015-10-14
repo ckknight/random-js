@@ -1,4 +1,8 @@
-# 1.0.7 (2015-01-13)
+# 1.0.8 (2015-10-13)
+
+- add `getUseCount()` to the `mt19937` engine, which returns how many requests or discards have occurred.
+
+# 1.0.7 (2015-10-13)
 
 - the current time is now used in `Random.generateEntropyArray`
 
