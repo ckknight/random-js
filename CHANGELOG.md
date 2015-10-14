@@ -1,3 +1,7 @@
+# 1.0.7 (2015-01-13)
+
+- the current time is now used in `Random.generateEntropyArray`
+
 # 1.0.6 (2015-09-28)
 
 - removed the optionalDependencies in package.json "benchmark" and "microtime".
