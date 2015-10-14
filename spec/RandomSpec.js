@@ -49,11 +49,17 @@
       it("gets entropy from the current date", function () {
         var GLOBAL = typeof module !== "undefined" ? global : root;
         var realDate = GLOBAL.Date;
-        spyOn(GLOBAL, "Date").andReturn(new realDate());
+        var stubDate = {
+          getTime: function () {
+            return 0x12345678;
+          }
+        };
+        spyOn(GLOBAL, "Date").andReturn(stubDate);
 
-        Random.generateEntropyArray();
+        var actual = Random.generateEntropyArray();
 
         expect(GLOBAL.Date).toHaveBeenCalled();
+        expect(actual).toContain(stubDate.getTime());
         GLOBAL.Date = realDate;
       });
 
