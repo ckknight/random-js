@@ -1,6 +1,18 @@
 (function (Random) {
   describe("engines.browserCrypto", function () {
-    if (typeof crypto === "undefined" || typeof crypto.getRandomValues !== "function" || typeof Int32Array !== "function") {
+    if (typeof require === "function" && typeof require('crypto').randomBytes === "function") {
+      var crypto = require('crypto');
+      it("calls crypto.randomBytes for randomness", function () {
+        spyOn(crypto, "randomBytes").andCallThrough();
+        
+        var result = Random.engines.browserCrypto();
+
+        expect(crypto.randomBytes).toHaveBeenCalled();
+        var arg = crypto.randomBytes.mostRecentCall.args[0];
+        expect(arg).toBe(4);
+        expect(typeof result).toBe('number');
+      });
+    } else if (typeof crypto === "undefined" || typeof crypto.getRandomValues !== "function" || typeof Int32Array !== "function") {
       it("is null due to lack of support", function () {
         expect(Random.engines.browserCrypto).toBe(null);
       });
