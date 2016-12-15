@@ -1,4 +1,5 @@
 # Random.js
+[![CDNJS](https://img.shields.io/cdnjs/v/random-js.svg)](https://cdnjs.com/libraries/random-js)
 
 This is designed to be a mathematically correct random number generator library for JavaScript.
 
