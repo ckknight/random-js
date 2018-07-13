@@ -1,9 +1,7 @@
 language: node_js
 node_js:
   - 'node'
-  - "6"
-  - "8"
+  - '6'
+  - '8'
   - '10'
-before_script:
-  - 'npm install -g jasmine-node'
 script: npm test

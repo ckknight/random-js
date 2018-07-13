@@ -16,20 +16,24 @@
   "main": "lib/random",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "karma": "~0.10.9",
+    "jasmine-node": "^1.15.0",
+    "karma": "^2.0.4",
     "karma-chrome-launcher": "~0.1.2",
     "karma-coffee-preprocessor": "~0.1.2",
-    "karma-coverage": "~0.1.5",
+    "karma-coverage": "^1.1.2",
     "karma-firefox-launcher": "~0.1.3",
     "karma-html2js-preprocessor": "~0.1.0",
     "karma-jasmine": "~0.1.5",
-    "karma-phantomjs-launcher": "~0.1.1",
+    "karma-phantomjs-launcher": "^1.0.4",
     "karma-requirejs": "~0.2.1",
     "karma-script-launcher": "~0.1.0",
     "requirejs": "~2.1.10"
   },
   "scripts": {
-    "test": "jasmine-node lib/random.js spec/",
+    "jasmine": "jasmine-node lib/random.js spec/",
+    "karma": "karma start karma.conf.js --single-run",
+    "pretest": "npm run jasmine",
+    "test": "npm run karma",
     "uglify": "uglifyjs lib/random.js -o lib/random.min.js -m -c"
   },
   "testling": {
