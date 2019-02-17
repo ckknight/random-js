@@ -1,44 +1,30 @@
 /*jshint node:true*/
 "use strict";
 
-var Benchmark = require('benchmark');
-var Random = require('../lib/random');
+const Benchmark = require("benchmark");
+const { nativeMath, real } = require("..");
 
-var suite = new Benchmark.Suite();
+const suite = new Benchmark.Suite();
 
-var nativeMath = Random.engines.nativeMath;
-
-var _0_1_exclusive = Random.real(0, 1, false);
-var _0_1_inclusive = Random.real(0, 1, true);
-var _0_10_exclusive = Random.real(0, 10, false);
-var _0_10_inclusive = Random.real(0, 10, true);
-var _5_10_exclusive = Random.real(5, 10, false);
-var _5_10_inclusive = Random.real(5, 10, true);
+const _0_1_exclusive = real(0, 1, false);
+const _0_1_inclusive = real(0, 1, true);
+const _0_10_exclusive = real(0, 10, false);
+const _0_10_inclusive = real(0, 10, true);
+const _5_10_exclusive = real(5, 10, false);
+const _5_10_inclusive = real(5, 10, true);
 
 suite
-  .add('real(0, 1, false)', function () {
-    return _0_1_exclusive(nativeMath);
-  })
-  .add('real(0, 1, true)', function () {
-    return _0_1_inclusive(nativeMath);
-  })
-  .add('real(0, 10, false)', function () {
-    return _0_10_exclusive(nativeMath);
-  })
-  .add('real(0, 10, true)', function () {
-    return _0_10_inclusive(nativeMath);
-  })
-  .add('real(5, 10, false)', function () {
-    return _5_10_exclusive(nativeMath);
-  })
-  .add('real(5, 10, true)', function () {
-    return _5_10_inclusive(nativeMath);
-  })
-  .on('cycle', function (event) {
+  .add("real(0, 1, false)", () => _0_1_exclusive(nativeMath))
+  .add("real(0, 1, true)", () => _0_1_inclusive(nativeMath))
+  .add("real(0, 10, false)", () => _0_10_exclusive(nativeMath))
+  .add("real(0, 10, true)", () => _0_10_inclusive(nativeMath))
+  .add("real(5, 10, false)", () => _5_10_exclusive(nativeMath))
+  .add("real(5, 10, true)", () => _5_10_inclusive(nativeMath))
+  .on("cycle", event => {
     console.log(String(event.target));
   })
-  .on('complete', function () {
-    console.log('Fastest is ' + this.filter('fastest').pluck('name'));
+  .on("complete", function() {
+    console.log("Fastest is " + this.filter("fastest")[0].name);
   })
   .run({
     async: true

@@ -1,48 +1,31 @@
-/*jshint node:true*/
 "use strict";
 
-var Benchmark = require('benchmark');
-var Random = require('../lib/random');
+const Benchmark = require("benchmark");
+const { nativeMath, bool } = require("..");
 
-var suite = new Benchmark.Suite();
+const suite = new Benchmark.Suite();
 
-var nativeMath = Random.engines.nativeMath;
-
-var simple = Random.bool();
-var oneHalf = Random.bool(1, 2);
-var fiftyPercent = Random.bool(1 / 2);
-var oneThird = Random.bool(1, 3);
-var twoFifths = Random.bool(2, 5);
-var oneEighth = Random.bool(1 / 8);
-var fiveTwelfths = Random.bool(5 / 12);
+const simple = bool();
+const oneHalf = bool(1, 2);
+const fiftyPercent = bool(1 / 2);
+const oneThird = bool(1, 3);
+const twoFifths = bool(2, 5);
+const oneEighth = bool(1 / 8);
+const fiveTwelfths = bool(5 / 12);
 
 suite
-  .add('bool()', function () {
-    return simple(nativeMath);
-  })
-  .add('bool(1, 2)', function () {
-    return oneHalf(nativeMath);
-  })
-  .add('bool(1 / 2)', function () {
-    return fiftyPercent(nativeMath);
-  })
-  .add('bool(1, 3)', function () {
-    return oneThird(nativeMath);
-  })
-  .add('bool(2, 5)', function () {
-    return twoFifths(nativeMath);
-  })
-  .add('bool(1 / 8)', function () {
-    return oneEighth(nativeMath);
-  })
-  .add('bool(5 / 12)', function () {
-    return fiveTwelfths(nativeMath);
-  })
-  .on('cycle', function (event) {
+  .add("bool()", () => simple(nativeMath))
+  .add("bool(1, 2)", () => oneHalf(nativeMath))
+  .add("bool(1 / 2)", () => fiftyPercent(nativeMath))
+  .add("bool(1, 3)", () => oneThird(nativeMath))
+  .add("bool(2, 5)", () => twoFifths(nativeMath))
+  .add("bool(1 / 8)", () => oneEighth(nativeMath))
+  .add("bool(5 / 12)", () => fiveTwelfths(nativeMath))
+  .on("cycle", event => {
     console.log(String(event.target));
   })
-  .on('complete', function () {
-    console.log('Fastest is ' + this.filter('fastest').pluck('name'));
+  .on("complete", function() {
+    console.log("Fastest is " + this.filter("fastest")[0].name);
   })
   .run({
     async: true
