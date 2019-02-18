@@ -1,3 +1,12 @@
+# 2.0.0-rc1 (2019-02-17)
+
+- Converted to TypeScript, with type definitions available.
+- Using ESNext-style modules (though still available as UMD)
+- Changed exports so that they are not available on the `Random` class, but instead in a flat hierarchy.
+- Switched from jasmine to jest
+- Using rollup to package the build
+- Changed .travis.yml node versions
+
 # 1.0.8 (2015-10-13)
 
 - add `getUseCount()` to the `mt19937` engine, which returns how many requests or discards have occurred.
