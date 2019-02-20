@@ -79,6 +79,18 @@ Any object that fulfills that interface is an `Engine`.
 
 One can seed a Mersenne Twister with the same value (`MersenneTwister19937.seed(value)`) or values (`MersenneTwister19937.seedWithArray(array)`) and discard the number of uses (`mt.getUseCount()`) to achieve the exact same state.
 
+If you wish to know the initial seed of `MersenneTwister19937.autoSeed()`, it is recommended to use the `createEntropy()` function to create the seed manually (this is what `autoSeed` does under-the-hood).
+
+```js
+const seed = createEntropy();
+const mt = MersenneTwister19937.seedWithArray(seed);
+useTwisterALot(mt); // you'll have to implement this yourself
+const clone = MersenneTwister19937.seedWithArray(seed).discard(
+  mt.getUseCount()
+);
+// at this point, `mt` and `clone` will produce equivalent values
+```
+
 ### Distributions
 
 Random.js also provides a set of methods for producing useful data from an engine.
