@@ -1,4 +1,4 @@
-# next (2019-02-20)
+# 2.0.0-rc2 (2019-02-20)
 
 - Added `nodeCrypto` engine
 - Exposed `createEntropy` function, which can be used when seeding a Mersenne Twister
