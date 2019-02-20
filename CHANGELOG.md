@@ -1,7 +1,8 @@
-# next (2019-02-19)
+# next (2019-02-20)
 
 - Added `nodeCrypto` engine
 - Exposed `createEntropy` function, which can be used when seeding a Mersenne Twister
+- Changed `browserCrypto` to no longer be `null` if outside of a browser context, instead `throw`ing on first use.
 
 # 2.0.0-rc1 (2019-02-17)
 
