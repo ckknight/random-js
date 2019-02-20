@@ -1,3 +1,8 @@
+# next (2019-02-19)
+
+- Added `nodeCrypto` engine
+- Exposed `createEntropy` function, which can be used when seeding a Mersenne Twister
+
 # 2.0.0-rc1 (2019-02-17)
 
 - Converted to TypeScript, with type definitions available.
