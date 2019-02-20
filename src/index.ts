@@ -2,6 +2,7 @@ export * from "./Random";
 export * from "./engine/browserCrypto";
 export * from "./engine/nativeMath";
 export * from "./engine/MersenneTwister19937";
+export * from "./engine/NodeCrypto";
 export * from "./types";
 export * from "./distribution/bool";
 export * from "./distribution/date";

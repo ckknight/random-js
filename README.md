@@ -54,7 +54,18 @@ Random.js provides a series of distributions to alleviate this.
 
 - `nativeMath`: Utilizes `Math.random()`
 - `browserCrypto`: Utilizes `crypto.getRandomValues()`
+- `nodeCrypto`: Utilizes `require('crypto').randomBytes()`
 - `MersenneTwister19937`: Produces a new Mersenne Twister. Must be seeded before use.
+
+Or you can make your own!
+
+```ts
+interface Engine {
+  next(): number; // an int32
+}
+```
+
+Any object that fulfills that interface is an `Engine`.
 
 ### Mersenne Twister API
 
