@@ -1,5 +1,7 @@
 # Random.js
 
+[![Build Status](https://travis-ci.org/ckknight/random-js.svg?branch=master)](https://travis-ci.org/ckknight/random-js)
+
 This is designed to be a mathematically correct random number generator library for JavaScript.
 
 Inspiration was primarily taken from C++11's `<random>`.
