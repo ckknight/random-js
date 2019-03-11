@@ -9,7 +9,7 @@ const I32Array: typeof Int32Array = (() => {
     if (view[0] === -0x80000000) {
       return Int32Array;
     }
-  } catch {
+  } catch (_) {
     // nothing to do here
   }
   return (Array as unknown) as typeof Int32Array;
