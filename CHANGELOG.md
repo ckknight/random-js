@@ -1,3 +1,7 @@
+# 2.0.0-rc3 (2019-03-10)
+
+- Provide a binding for `try`-`catch` to help parsing issues [#30](https://github.com/ckknight/random-js/issues/30)
+
 # 2.0.0-rc2 (2019-02-20)
 
 - Added `nodeCrypto` engine
