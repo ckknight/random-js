@@ -6,6 +6,9 @@ This is designed to be a mathematically correct random number generator library 
 
 Inspiration was primarily taken from C++11's `<random>`.
 
+## Upgrading from 1.0
+Upgrading from 1.0 to 2.0 is a major, breaking change. For the most part, the way exports are defined is different. Instead of everything being available as static properties on a class-like function, random-js 2.0 exports each binding in accordance with current ECMAScript standards.
+
 ## Why is this needed?
 
 Despite `Math.random()` being capable of producing numbers within [0, 1), there are a few downsides to doing so:
