@@ -1,7 +1,7 @@
 {
   "name": "random-js",
   "description": "A mathematically correct random number generator library for JavaScript.",
-  "version": "2.0.0-rc4",
+  "version": "2.0.0-rc5",
   "author": {
     "name": "Cameron Kenneth Knight",
     "email": "ckknight@gmail.com"
@@ -39,11 +39,11 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build:umd": "rollup -c rollup.config.es3.js --format umd -o dist/random-js.js --name Random",
-    "build:esm": "rollup -c rollup.config.js --format esm -o dist/random-js.mjs",
+    "build:umd": "rollup -c rollup.config.es3.js --format umd -o dist/random-js.js --name Random -m",
+    "build:esm": "rollup -c rollup.config.js --format esm --sourcemap true -o dist/random-js.mjs",
     "prebuild": "yarn clean",
     "build": "yarn build:umd && yarn build:esm",
-    "minify": "terser --compress --mangle --output dist/random-js.min.js dist/random-js.js",
+    "minify": "terser --source-map content=dist/random-js.js.map --compress --mangle --output dist/random-js.min.js dist/random-js.js",
     "postbuild": "yarn minify",
     "benchmark": "for k in benchmark/*.js; do node $k; done",
     "test": "jest",

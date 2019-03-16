@@ -1,3 +1,7 @@
+# 2.0.0-rc5 (2019-03-15)
+
+- Add sourcemaps
+
 # 2.0.0-rc4 (2019-03-15)
 
 - Improve minified bundle size
