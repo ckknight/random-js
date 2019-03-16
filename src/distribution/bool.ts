@@ -1,4 +1,5 @@
 import { Distribution, Engine } from "../types";
+import { INT32_SIZE, SMALLEST_UNSAFE_INTEGER, UINT32_SIZE } from "../utils/constants";
 import { int32 } from "./int32";
 import { integer } from "./integer";
 import { uint53 } from "./uint53";
@@ -20,11 +21,11 @@ function probability(percentage: number) {
   } else if (percentage >= 1) {
     return () => true;
   } else {
-    const scaled = percentage * 0x100000000;
+    const scaled = percentage * UINT32_SIZE;
     if (scaled % 1 === 0) {
-      return lessThan(int32, (scaled - 0x80000000) | 0);
+      return lessThan(int32, (scaled - INT32_SIZE) | 0);
     } else {
-      return lessThan(uint53, Math.round(percentage * 0x20000000000000));
+      return lessThan(uint53, Math.round(percentage * SMALLEST_UNSAFE_INTEGER));
     }
   }
 }

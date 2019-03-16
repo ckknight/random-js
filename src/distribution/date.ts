@@ -8,6 +8,6 @@ import { integer } from "./integer";
  * @param end The maximum `Date`
  */
 export function date(start: Date, end: Date): Distribution<Date> {
-  const distribution = integer(start.getTime(), end.getTime());
+  const distribution = integer(+start, +end);
   return engine => new Date(distribution(engine));
 }

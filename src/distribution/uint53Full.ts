@@ -1,4 +1,10 @@
 import { Engine } from "../types";
+import {
+  SMALLEST_UNSAFE_INTEGER,
+  UINT21_MAX,
+  UINT21_SIZE,
+  UINT32_SIZE
+} from "../utils/constants";
 
 /**
  * Returns a value within [0, 0x20000000000000]
@@ -6,13 +12,13 @@ import { Engine } from "../types";
 export function uint53Full(engine: Engine): number {
   while (true) {
     const high = engine.next() | 0;
-    if (high & 0x200000) {
-      if ((high & 0x3fffff) === 0x200000 && (engine.next() | 0) === 0) {
-        return 0x20000000000000;
+    if (high & UINT21_SIZE) {
+      if ((high & UINT21_MAX) === 0 && (engine.next() | 0) === 0) {
+        return SMALLEST_UNSAFE_INTEGER;
       }
     } else {
       const low = engine.next() >>> 0;
-      return (high & 0x1fffff) * 0x100000000 + low;
+      return (high & UINT21_MAX) * UINT32_SIZE + low;
     }
   }
 }

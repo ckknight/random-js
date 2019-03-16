@@ -1,3 +1,8 @@
+# 2.0.0-rc4 (2019-03-15)
+
+- Improve minified bundle size
+- Add `"sideEffects": false` to `package.json` as a hint to Webpack
+
 # 2.0.0-rc3 (2019-03-10)
 
 - Provide a binding for `try`-`catch` to help parsing issues [#30](https://github.com/ckknight/random-js/issues/30)

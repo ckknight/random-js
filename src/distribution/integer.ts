@@ -1,5 +1,14 @@
 import { Distribution, Engine } from "../types";
 import { add } from "../utils/add";
+import {
+  INT32_SIZE,
+  LARGEST_SAFE_INTEGER,
+  SMALLEST_UNSAFE_INTEGER,
+  UINT21_MAX,
+  UINT21_SIZE,
+  UINT32_MAX,
+  UINT32_SIZE
+} from "../utils/constants";
 import { int32 } from "./int32";
 import { int53 } from "./int53";
 import { int53Full } from "./int53Full";
@@ -17,7 +26,7 @@ function bitmask(masking: number): Distribution {
 
 function downscaleToLoopCheckedRange(range: number): Distribution {
   const extendedRange = range + 1;
-  const maximum = extendedRange * Math.floor(0x100000000 / extendedRange);
+  const maximum = extendedRange * Math.floor(UINT32_SIZE / extendedRange);
   return engine => {
     let value = 0;
     do {
@@ -43,18 +52,19 @@ function upscaleWithHighMasking(masking: number): Distribution {
   return engine => {
     const high = engine.next() & masking;
     const low = engine.next() >>> 0;
-    return high * 0x100000000 + low;
+    return high * UINT32_SIZE + low;
   };
 }
 
 function upscaleToLoopCheckedRange(extendedRange: number): Distribution {
-  const maximum = extendedRange * Math.floor(0x20000000000000 / extendedRange);
+  const maximum =
+    extendedRange * Math.floor(SMALLEST_UNSAFE_INTEGER / extendedRange);
   return engine => {
     let ret = 0;
     do {
-      const high = engine.next() & 0x1fffff;
+      const high = engine.next() & UINT21_MAX;
       const low = engine.next() >>> 0;
-      ret = high * 0x100000000 + low;
+      ret = high * UINT32_SIZE + low;
     } while (ret >= maximum);
     return ret % extendedRange;
   };
@@ -63,7 +73,7 @@ function upscaleToLoopCheckedRange(extendedRange: number): Distribution {
 function upscaleWithinU53(range: number): Distribution {
   const extendedRange = range + 1;
   if (isEvenlyDivisibleByMaxInt32(extendedRange)) {
-    const highRange = ((extendedRange / 0x100000000) | 0) - 1;
+    const highRange = ((extendedRange / UINT32_SIZE) | 0) - 1;
     if (isPowerOfTwoMinusOne(highRange)) {
       return upscaleWithHighMasking(highRange);
     }
@@ -78,9 +88,9 @@ function upscaleWithinI53AndLoopCheck(min: number, max: number): Distribution {
       const high = engine.next() | 0;
       const low = engine.next() >>> 0;
       ret =
-        (high & 0x1fffff) * 0x100000000 +
+        (high & UINT21_MAX) * UINT32_SIZE +
         low +
-        (high & 0x200000 ? -0x20000000000000 : 0);
+        (high & UINT21_SIZE ? -SMALLEST_UNSAFE_INTEGER : 0);
     } while (ret < min || ret > max);
     return ret;
   };
@@ -94,36 +104,43 @@ function upscaleWithinI53AndLoopCheck(min: number, max: number): Distribution {
 export function integer(min: number, max: number): Distribution {
   min = Math.floor(min);
   max = Math.floor(max);
-  if (min < -0x20000000000000 || !isFinite(min)) {
-    throw new RangeError(`Expected min to be at least ${-0x20000000000000}`);
-  } else if (max > 0x20000000000000 || !isFinite(max)) {
-    throw new RangeError(`Expected max to be at most ${0x20000000000000}`);
+  if (min < -SMALLEST_UNSAFE_INTEGER || !isFinite(min)) {
+    throw new RangeError(
+      `Expected min to be at least ${-SMALLEST_UNSAFE_INTEGER}`
+    );
+  } else if (max > SMALLEST_UNSAFE_INTEGER || !isFinite(max)) {
+    throw new RangeError(
+      `Expected max to be at most ${SMALLEST_UNSAFE_INTEGER}`
+    );
   }
 
   const range = max - min;
   if (range <= 0 || !isFinite(range)) {
     return () => min;
-  } else if (range === 0xffffffff) {
+  } else if (range === UINT32_MAX) {
     if (min === 0) {
       return uint32;
     } else {
-      return add(int32, min + 0x80000000);
+      return add(int32, min + INT32_SIZE);
     }
-  } else if (range < 0xffffffff) {
+  } else if (range < UINT32_MAX) {
     return add(downscaleToRange(range), min);
-  } else if (range === 0x1fffffffffffff) {
+  } else if (range === LARGEST_SAFE_INTEGER) {
     return add(uint53, min);
-  } else if (range < 0x1fffffffffffff) {
+  } else if (range < LARGEST_SAFE_INTEGER) {
     return add(upscaleWithinU53(range), min);
-  } else if (max - 1 - min === 0x1fffffffffffff) {
+  } else if (max - 1 - min === LARGEST_SAFE_INTEGER) {
     return add(uint53Full, min);
-  } else if (min === -0x20000000000000 && max === 0x20000000000000) {
+  } else if (
+    min === -SMALLEST_UNSAFE_INTEGER &&
+    max === SMALLEST_UNSAFE_INTEGER
+  ) {
     return int53Full;
-  } else if (min === -0x20000000000000 && max === 0x1fffffffffffff) {
+  } else if (min === -SMALLEST_UNSAFE_INTEGER && max === LARGEST_SAFE_INTEGER) {
     return int53;
-  } else if (min === -0x1fffffffffffff && max === 0x20000000000000) {
+  } else if (min === -LARGEST_SAFE_INTEGER && max === SMALLEST_UNSAFE_INTEGER) {
     return add(int53, 1);
-  } else if (max === 0x20000000000000) {
+  } else if (max === SMALLEST_UNSAFE_INTEGER) {
     return add(upscaleWithinI53AndLoopCheck(min - 1, max - 1), 1);
   } else {
     return upscaleWithinI53AndLoopCheck(min, max);

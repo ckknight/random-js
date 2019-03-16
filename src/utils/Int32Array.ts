@@ -1,3 +1,5 @@
+import { INT32_SIZE } from "./constants";
+
 /**
  * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array
  */
@@ -5,8 +7,8 @@ const I32Array: typeof Int32Array = (() => {
   try {
     const buffer = new ArrayBuffer(4);
     const view = new Int32Array(buffer);
-    view[0] = 0x80000000;
-    if (view[0] === -0x80000000) {
+    view[0] = INT32_SIZE;
+    if (view[0] === -INT32_SIZE) {
       return Int32Array;
     }
   } catch (_) {
