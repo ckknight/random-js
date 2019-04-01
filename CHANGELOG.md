@@ -1,3 +1,7 @@
+# 2.0.0 (2019-04-01)
+
+- Release 2.0.0 (no code changes from 2.0.0-rc5)
+
 # 2.0.0-rc5 (2019-03-15)
 
 - Add sourcemaps
