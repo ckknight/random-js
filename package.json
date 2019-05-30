@@ -1,7 +1,7 @@
 {
   "name": "random-js",
   "description": "A mathematically correct random number generator library for JavaScript.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": {
     "name": "Cameron Kenneth Knight",
     "email": "ckknight@gmail.com"
@@ -13,9 +13,9 @@
   "bugs": "https://github.com/ckknight/random-js/issues",
   "license": "MIT",
   "repository": "git://github.com/ckknight/random-js",
-  "main": "dist/random-js.js",
-  "module": "dist/random-js.mjs",
-  "unpkg": "dist/random-js.min.js",
+  "main": "dist/random-js.umd.js",
+  "module": "dist/random-js.esm.js",
+  "unpkg": "dist/random-js.umd.min.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -39,11 +39,11 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build:umd": "rollup -c rollup.config.es3.js --format umd -o dist/random-js.js --name Random -m",
-    "build:esm": "rollup -c rollup.config.js --format esm --sourcemap true -o dist/random-js.mjs",
+    "build:umd": "rollup -c rollup.config.es3.js --format umd -o dist/random-js.umd.js --name Random -m",
+    "build:esm": "rollup -c rollup.config.js --format esm --sourcemap true -o dist/random-js.esm.js",
     "prebuild": "yarn clean",
     "build": "yarn build:umd && yarn build:esm",
-    "minify": "terser --source-map content=dist/random-js.js.map --compress --mangle --output dist/random-js.min.js dist/random-js.js",
+    "minify": "terser --source-map content=dist/random-js.umd.js.map --compress --mangle --output dist/random-js.umd.min.js dist/random-js.umd.js",
     "postbuild": "yarn minify",
     "benchmark": "for k in benchmark/*.js; do node $k; done",
     "test": "jest",
