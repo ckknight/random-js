@@ -1,4 +1,5 @@
 # Random.js
+[![CDNJS](https://img.shields.io/cdnjs/v/random-js.svg)](https://cdnjs.com/libraries/random-js)
 
 [![Build Status](https://travis-ci.org/ckknight/random-js.svg?branch=master)](https://travis-ci.org/ckknight/random-js)
 
