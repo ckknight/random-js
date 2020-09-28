@@ -7,8 +7,6 @@ module.exports = {
   globals: {
     "ts-jest": {
       tsConfig: {
-        target: "es3",
-        module: "commonjs",
         rootDir: "./src"
       }
     }

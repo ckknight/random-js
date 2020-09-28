@@ -2,4 +2,11 @@ node_modules
 .DS_Store
 coverage
 .rpt2_cache
-dist
+.idea
+
+/dist/*.js
+/dist/**/*.js
+/dist/*.ts
+/dist/**/*.ts
+/dist/*.map
+/dist/**/*.map

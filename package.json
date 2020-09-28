@@ -13,39 +13,39 @@
   "bugs": "https://github.com/ckknight/random-js/issues",
   "license": "MIT",
   "repository": "git://github.com/ckknight/random-js",
-  "main": "dist/random-js.umd.js",
-  "module": "dist/random-js.esm.js",
-  "unpkg": "dist/random-js.umd.min.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/umd/random-js.js",
+  "module": "./dist/esm/random-js.js",
+  "unpkg": "./dist/umd/random-js.min.js",
+  "types": "./dist/esm/index.d.ts",
   "files": [
     "dist"
   ],
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@types/jest": "^24.0.5",
-    "@types/node": "^11.9.4",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
     "benchmark": "^2.1.4",
-    "jest": "^24.1.0",
+    "jest": "^26.4.2",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
-    "rollup": "^1.2.1",
-    "rollup-plugin-typescript": "^1.0.0",
-    "rollup-plugin-typescript2": "^0.19.2",
-    "terser": "^3.16.1",
-    "ts-jest": "^23.10.5",
-    "tslint": "^5.12.1",
+    "rollup": "^2.28.2",
+    "rollup-plugin-typescript": "^1.0.1",
+    "rollup-plugin-typescript2": "^0.27.3",
+    "terser": "^5.3.3",
+    "ts-jest": "^26.4.0",
+    "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.3.3"
+    "typescript": "^3.9.7"
   },
   "scripts": {
-    "clean": "rimraf dist",
-    "build:umd": "rollup -c rollup.config.es3.js --format umd -o dist/random-js.umd.js --name Random -m",
-    "build:esm": "rollup -c rollup.config.js --format esm --sourcemap true -o dist/random-js.esm.js",
+    "clean": "rimraf dist/**/*.js dist/**/*.ts dist/**/*.map",
+    "build:umd": "rollup -c rollup.config.es3.js --format umd -o dist/umd/random-js.js --name Random -m",
+    "build:esm": "rollup -c rollup.config.js --format esm --sourcemap true -o dist/esm/random-js.js",
     "prebuild": "yarn clean",
     "build": "yarn build:umd && yarn build:esm",
-    "minify": "terser --source-map content=dist/random-js.umd.js.map --compress --mangle --output dist/random-js.umd.min.js dist/random-js.umd.js",
+    "minify": "terser --source-map content=dist/umd/random-js.js.map --compress --mangle --output dist/umd/random-js.min.js dist/umd/random-js.js",
     "postbuild": "yarn minify",
-    "benchmark": "for k in benchmark/*.js; do node $k; done",
+    "benchmark": "for k in benchmark/*.cjs; do node $k; done",
     "test": "jest",
     "lint": "tslint --project .",
     "prepublish": "yarn clean && yarn lint && yarn test && yarn build"
@@ -53,5 +53,14 @@
   "testling": {
     "files": "spec/*.js"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/random-js.js",
+      "require": "./dist/umd/random-js.js"
+    },
+    "./dist": "./dist",
+    "./package.json": "./package.json"
+  }
 }
