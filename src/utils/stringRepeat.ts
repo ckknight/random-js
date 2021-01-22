@@ -4,7 +4,7 @@ export const stringRepeat = (() => {
       return (pattern: string, count: number): string =>
         (pattern as any).repeat(count);
     }
-  } catch {
+  } catch (_) {
     // nothing to do here
   }
   return (pattern: string, count: number): string => {

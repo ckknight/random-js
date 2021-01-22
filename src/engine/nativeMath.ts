@@ -1,8 +1,11 @@
 import { Engine } from "../types";
+import { UINT32_SIZE } from "../utils/constants";
 
 /**
  * An int32-producing Engine that uses `Math.random()`
  */
 export const nativeMath: Engine = {
-  next: () => (Math.random() * 0x100000000) | 0
+  next() {
+    return (Math.random() * UINT32_SIZE) | 0;
+  }
 };

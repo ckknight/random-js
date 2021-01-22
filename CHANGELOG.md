@@ -1,3 +1,27 @@
+# 2.1.0 (2019-05-30)
+
+- Changed `dist/` outputs:
+  - `random-js.js` => `random-js.umd.js`
+  - `random-js.mjs` => `random-js.esm.js`
+  - `random-js.min.js` => `random-js.umd.min.js`
+
+# 2.0.0 (2019-04-01)
+
+- Release 2.0.0 (no code changes from 2.0.0-rc5)
+
+# 2.0.0-rc5 (2019-03-15)
+
+- Add sourcemaps
+
+# 2.0.0-rc4 (2019-03-15)
+
+- Improve minified bundle size
+- Add `"sideEffects": false` to `package.json` as a hint to Webpack
+
+# 2.0.0-rc3 (2019-03-10)
+
+- Provide a binding for `try`-`catch` to help parsing issues [#30](https://github.com/ckknight/random-js/issues/30)
+
 # 2.0.0-rc2 (2019-02-20)
 
 - Added `nodeCrypto` engine
