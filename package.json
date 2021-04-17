@@ -23,7 +23,7 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "@types/jest": "^26.0.22",
-    "@types/node": "^14.14.37",
+    "@types/node": "^14.14.41",
     "benchmark": "^2.1.4",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
@@ -32,7 +32,7 @@
     "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-typescript2": "^0.30.0",
     "terser": "^5.6.1",
-    "ts-jest": "^26.5.4",
+    "ts-jest": "^26.5.5",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.2.4"
