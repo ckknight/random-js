@@ -28,7 +28,7 @@
     "jest": "^27.0.1",
     "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.50.1",
+    "rollup": "^2.50.4",
     "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-typescript2": "^0.30.0",
     "terser": "^5.7.0",
