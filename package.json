@@ -23,7 +23,7 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "@types/jest": "^26.0.24",
-    "@types/node": "^16.0.0",
+    "@types/node": "^16.0.1",
     "benchmark": "^2.1.4",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
