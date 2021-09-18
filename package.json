@@ -23,10 +23,10 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "@types/jest": "^27.0.1",
-    "@types/node": "^16.9.1",
+    "@types/node": "^16.9.2",
     "benchmark": "^2.1.4",
     "jest": "^27.2.0",
-    "prettier": "^2.4.0",
+    "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
     "rollup-plugin-typescript": "^1.0.1",
