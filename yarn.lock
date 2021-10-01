@@ -322,7 +322,7 @@
     jest-util "^27.2.4"
     slash "^3.0.0"
 
-"@jest/core@^27.2.3", "@jest/core@^27.2.4":
+"@jest/core@^27.2.4":
   version "27.2.4"
   resolved "https://registry.yarnpkg.com/@jest/core/-/core-27.2.4.tgz#0b932da787d64848eab720dbb88e5b7a3f86e539"
   integrity sha512-UNQLyy+rXoojNm2MGlapgzWhZD1CT1zcHZQYeiD0xE7MtJfC19Q6J5D/Lm2l7i4V97T30usKDoEtjI8vKwWcLg==
@@ -572,10 +572,10 @@
     jest-diff "^27.0.0"
     pretty-format "^27.0.0"
 
-"@types/node@*", "@types/node@^16.10.1":
-  version "16.10.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.1.tgz#f3647623199ca920960006b3dccf633ea905f243"
-  integrity sha512-4/Z9DMPKFexZj/Gn3LylFgamNKHm4K3QDi0gz9B26Uk0c8izYf97B5fxfpspMNkWlFupblKM/nV8+NA9Ffvr+w==
+"@types/node@*", "@types/node@^16.10.2":
+  version "16.10.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.2.tgz#5764ca9aa94470adb4e1185fe2e9f19458992b2e"
+  integrity sha512-zCclL4/rx+W5SQTzFs9wyvvyCwoK9QtBpratqz2IYJ3O8Umrn0m3nsTv0wQBk9sRGpvUe9CwPDrQFB10f1FIjQ==
 
 "@types/prettier@^2.1.5":
   version "2.2.3"
@@ -1455,7 +1455,7 @@ jest-circus@^27.2.4:
     stack-utils "^2.0.3"
     throat "^6.0.1"
 
-jest-cli@^27.2.3:
+jest-cli@^27.2.4:
   version "27.2.4"
   resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-27.2.4.tgz#acda7f367aa6e674723fc1a7334e0ae1799448d2"
   integrity sha512-4kpQQkg74HYLaXo3nzwtg4PYxSLgL7puz1LXHj5Tu85KmlIpxQFjRkXlx4V47CYFFIDoyl3rHA/cXOxUWyMpNg==
@@ -1823,14 +1823,14 @@ jest-worker@^27.2.4:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jest@^27.2.3:
-  version "27.2.3"
-  resolved "https://registry.yarnpkg.com/jest/-/jest-27.2.3.tgz#9c2af9ce874a3eb202f83d92fbc1cc61ccc73248"
-  integrity sha512-r4ggA29J5xUg93DpvbsX+AXlFMWE3hZ5Y6BfgTl8PJvWelVezNPkmrsixuGoDBTHTCwScRSH0O4wsoeUgLie2w==
+jest@^27.2.4:
+  version "27.2.4"
+  resolved "https://registry.yarnpkg.com/jest/-/jest-27.2.4.tgz#70e27bef873138afc123aa4769f7124c50ad3efb"
+  integrity sha512-h4uqb1EQLfPulWyUFFWv9e9Nn8sCqsJ/j3wk/KCY0p4s4s0ICCfP3iMf6hRf5hEhsDyvyrCgKiZXma63gMz16A==
   dependencies:
-    "@jest/core" "^27.2.3"
+    "@jest/core" "^27.2.4"
     import-local "^3.0.2"
-    jest-cli "^27.2.3"
+    jest-cli "^27.2.4"
 
 js-tokens@^4.0.0:
   version "4.0.0"
