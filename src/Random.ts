@@ -181,7 +181,7 @@ export class Random {
   /**
    * Returns a Universally Unique Identifier Version 4.
    *
-   * See http://en.wikipedia.org/wiki/Universally_unique_identifier
+   * See https://en.wikipedia.org/wiki/Universally_unique_identifier
    */
   public uuid4(): string {
     return uuid4(this.engine);
