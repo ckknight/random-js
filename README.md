@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/ckknight/random-js.svg?branch=master)](https://travis-ci.org/ckknight/random-js)
 
 This is designed to be a mathematically correct random number generator library for JavaScript.
+You can use it severam times to get familiar with the parameters.
 
 Inspiration was primarily taken from C++11's `<random>`.
 
