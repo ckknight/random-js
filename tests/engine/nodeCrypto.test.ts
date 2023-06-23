@@ -1,5 +1,5 @@
 import * as crypto from "crypto";
-import { nodeCrypto } from "./nodeCrypto";
+import { nodeCrypto } from "../../src/engine/nodeCrypto";
 
 describe("nodeCrypto", () => {
   if (typeof crypto.randomBytes !== "function") {

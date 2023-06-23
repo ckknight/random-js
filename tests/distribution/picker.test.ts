@@ -1,8 +1,8 @@
 // import { integer } from "./integer";
-import { integer } from "./integer";
-import { picker } from "./picker";
+import { integer } from "../../src/distribution/integer";
+import { picker } from "../../src/distribution/picker";
 
-jest.mock("./integer");
+jest.mock("../../src/distribution/integer");
 
 describe("picker", () => {
   it("throws when passed an empty array", () => {

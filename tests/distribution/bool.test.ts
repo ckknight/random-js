@@ -1,11 +1,11 @@
-import { bool } from "./bool";
-import { int32 } from "./int32";
-import { integer } from "./integer";
-import { uint53 } from "./uint53";
+import { bool } from "../../src/distribution/bool";
+import { int32 } from "../../src/distribution/int32";
+import { integer } from "../../src/distribution/integer";
+import { uint53 } from "../../src/distribution/uint53";
 
-jest.mock("./int32");
-jest.mock("./uint53");
-jest.mock("./integer");
+jest.mock("../../src/distribution/int32");
+jest.mock("../../src/distribution/uint53");
+jest.mock("../../src/distribution/integer");
 
 describe("bool distribution", () => {
   describe("when passed no arguments", () => {

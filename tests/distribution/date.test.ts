@@ -1,7 +1,7 @@
-import { date } from "./date";
-import { integer } from "./integer";
+import { date } from "../../src/distribution/date";
+import { integer } from "../../src/distribution/integer";
 
-jest.mock("./integer");
+jest.mock("../../src/distribution/integer");
 
 describe("date distribution", () => {
   it("returns a wrapped integer distribution from start time to end time", () => {

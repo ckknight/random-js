@@ -1,8 +1,8 @@
-import { Engine } from "../types";
-import { integer } from "./integer";
-import { shuffle } from "./shuffle";
+import { Engine } from "../../src/types";
+import { integer } from "../../src/distribution/integer";
+import { shuffle } from "../../src/distribution/shuffle";
 
-jest.mock("./integer");
+jest.mock("../../src/distribution/integer");
 
 describe("shuffle", () => {
   it("generates evenly-distributed integers from [0, n) where n is the length and decreases each iteration, swapping items each time", () => {

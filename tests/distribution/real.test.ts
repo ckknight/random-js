@@ -1,9 +1,9 @@
-import { real } from "./real";
-import { realZeroToOneExclusive } from "./realZeroToOneExclusive";
-import { realZeroToOneInclusive } from "./realZeroToOneInclusive";
+import { real } from "../../src/distribution/real";
+import { realZeroToOneExclusive } from "../../src/distribution/realZeroToOneExclusive";
+import { realZeroToOneInclusive } from "../../src/distribution/realZeroToOneInclusive";
 
-jest.mock("./realZeroToOneExclusive");
-jest.mock("./realZeroToOneInclusive");
+jest.mock("../../src/distribution/realZeroToOneExclusive");
+jest.mock("../../src/distribution/realZeroToOneInclusive");
 
 describe("real distribution", () => {
   [-Infinity, NaN, Infinity].forEach(value => {

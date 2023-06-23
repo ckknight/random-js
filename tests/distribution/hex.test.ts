@@ -1,5 +1,5 @@
-import { nativeMath } from "../engine/nativeMath";
-import { hex } from "./hex";
+import { nativeMath } from "../../src/engine/nativeMath";
+import { hex } from "../../src/distribution/hex";
 
 describe("hex", () => {
   const owns = Object.prototype.hasOwnProperty;
