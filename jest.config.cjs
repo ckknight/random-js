@@ -10,5 +10,8 @@ module.exports = {
         rootDir: "./src"
       }
     }
-  }
+  },
+  testMatch: [
+    '<rootDir>/tests/**/*.[jt]s?(x)',
+  ],
 };

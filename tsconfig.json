@@ -2,13 +2,10 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "declaration": true,
+    "declaration": false,
+    "declarationDir": null,
     "rootDir": "./src",
     "strict": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noImplicitReturns": true,
-    // "noFallthroughCasesInSwitch": true
     "sourceMap": true
   },
   "exclude": ["dist/**"]
