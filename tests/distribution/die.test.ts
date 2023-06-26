@@ -1,7 +1,7 @@
-import { die } from "./die";
-import { integer } from "./integer";
+import { die } from "../../src/distribution/die";
+import { integer } from "../../src/distribution/integer";
 
-jest.mock("./integer");
+jest.mock("../../src/distribution/integer");
 
 describe("die", () => {
   it("returns an integer distribution from 1 to sideCount", () => {

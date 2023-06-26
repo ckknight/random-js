@@ -1,7 +1,7 @@
-import { sample } from "./sample";
-import { shuffle } from "./shuffle";
+import { sample } from "../../src/distribution/sample";
+import { shuffle } from "../../src/distribution/shuffle";
 
-jest.mock("./shuffle");
+jest.mock("../../src/distribution/shuffle");
 
 describe("sample", () => {
   [-Infinity, Infinity, NaN, -1, 5].forEach(sampleSize => {

@@ -1,4 +1,4 @@
-import { nativeMath } from "./nativeMath";
+import { nativeMath } from "../../src/engine/nativeMath";
 
 describe("engines.nativeMath", () => {
   it("returns the result of Math.random() converted to a Int32", () => {

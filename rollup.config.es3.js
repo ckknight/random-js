@@ -1,7 +1,9 @@
-import typescript from "rollup-plugin-typescript2";
+import typescript from 'rollup-plugin-typescript2';
+
+const inputPath = './src/index.ts';
 
 export default {
-  input: "./src/index.ts",
+  input: inputPath,
   plugins: [
     typescript({
       tsconfigOverride: {
@@ -10,7 +12,7 @@ export default {
           declaration: false,
           declarationMap: false
         },
-        exclude: ["dist/**", "src/**/*.test.ts"]
+        exclude: ["dist/**", "**/*.test.ts"]
       }
     })
   ]

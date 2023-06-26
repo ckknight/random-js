@@ -1,7 +1,7 @@
-import { integer } from "./integer";
-import { pick } from "./pick";
+import { integer } from "../../src/distribution/integer";
+import { pick } from "../../src/distribution/pick";
 
-jest.mock("./integer");
+jest.mock("../../src/distribution/integer");
 
 describe("pick", () => {
   describe("with an empty array", () => {

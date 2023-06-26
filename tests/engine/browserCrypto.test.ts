@@ -1,4 +1,4 @@
-import { browserCrypto } from "./browserCrypto";
+import { browserCrypto } from "../../src/engine/browserCrypto";
 
 describe("browserCrypto", () => {
   beforeAll(() => {

@@ -1,7 +1,7 @@
-import { dice } from "./dice";
-import { die } from "./die";
+import { dice } from "../../src/distribution/dice";
+import { die } from "../../src/distribution/die";
 
-jest.mock("./die");
+jest.mock("../../src/distribution/die");
 
 describe("dice", () => {
   function makeReturner<T>(input: ReadonlyArray<T>): () => T {

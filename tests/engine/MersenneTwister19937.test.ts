@@ -1,8 +1,8 @@
-import { Engine } from "../types";
-import { createEntropy } from "../utils/createEntropy";
-import { MersenneTwister19937 } from "./MersenneTwister19937";
+import { Engine } from "../../src/types";
+import { createEntropy } from "../../src/utils/createEntropy";
+import { MersenneTwister19937 } from "../../src/engine/MersenneTwister19937";
 
-jest.mock("../utils/createEntropy");
+jest.mock("../../src/utils/createEntropy");
 
 describe("MersenneTwister19937", () => {
   "use strict";

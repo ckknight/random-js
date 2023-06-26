@@ -1,7 +1,7 @@
-import { realZeroToOneInclusive } from "./realZeroToOneInclusive";
-import { uint53Full } from "./uint53Full";
+import { realZeroToOneInclusive } from "../../src/distribution/realZeroToOneInclusive";
+import { uint53Full } from "../../src/distribution/uint53Full";
 
-jest.mock("./uint53Full");
+jest.mock("../../src/distribution/uint53Full");
 
 describe("realZeroToOneInclusive", () => {
   it("calls uint53Full and divides by the maximum", () => {

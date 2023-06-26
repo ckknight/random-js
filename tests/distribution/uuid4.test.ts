@@ -1,5 +1,5 @@
-import { Engine } from "../types";
-import { uuid4 } from "./uuid4";
+import { Engine } from "../../src/types";
+import { uuid4 } from "../../src/distribution/uuid4";
 
 describe("uuid4", () => {
   function makeEngine(input: ReadonlyArray<number>): Engine {

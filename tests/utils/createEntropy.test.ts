@@ -1,5 +1,5 @@
-import { nativeMath } from "../engine/nativeMath";
-import { createEntropy } from "./createEntropy";
+import { nativeMath } from "../../src/engine/nativeMath";
+import { createEntropy } from "../../src/utils/createEntropy";
 
 describe("createEntropy", () => {
   it("returns a non-empty array of int32s", () => {

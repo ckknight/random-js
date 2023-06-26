@@ -1,7 +1,7 @@
-import { integer } from "./integer";
-import { string } from "./string";
+import { integer } from "../../src/distribution/integer";
+import { string } from "../../src/distribution/string";
 
-jest.mock("./integer");
+jest.mock("../../src/distribution/integer");
 
 describe("string", () => {
   describe("with pool = 'abcde'", () => {

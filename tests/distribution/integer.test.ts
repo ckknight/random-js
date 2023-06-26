@@ -1,12 +1,12 @@
-import { MersenneTwister19937 } from "../engine/MersenneTwister19937";
-import { Distribution, Engine } from "../types";
-import { int32 } from "./int32";
-import { int53 } from "./int53";
-import { int53Full } from "./int53Full";
-import { integer } from "./integer";
-import { uint32 } from "./uint32";
-import { uint53 } from "./uint53";
-import { uint53Full } from "./uint53Full";
+import { MersenneTwister19937 } from "../../src/engine/MersenneTwister19937";
+import { Distribution, Engine } from "../../src/types";
+import { int32 } from "../../src/distribution/int32";
+import { int53 } from "../../src/distribution/int53";
+import { int53Full } from "../../src/distribution/int53Full";
+import { integer } from "../../src/distribution/integer";
+import { uint32 } from "../../src/distribution/uint32";
+import { uint53 } from "../../src/distribution/uint53";
+import { uint53Full } from "../../src/distribution/uint53Full";
 
 describe("integer distribution", () => {
   [-Math.pow(2, 53) - 2, -Infinity, NaN, Infinity].forEach(min => {
