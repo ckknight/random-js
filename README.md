@@ -7,6 +7,7 @@ This is designed to be a mathematically correct random number generator library 
 Inspiration was primarily taken from C++11's `<random>`.
 
 ## Upgrading from 1.0
+
 Upgrading from 1.0 to 2.0 is a major, breaking change. For the most part, the way exports are defined is different. Instead of everything being available as static properties on a class-like function, random-js 2.0 exports each binding in accordance with current ECMAScript standards.
 
 ## Why is this needed?
@@ -36,6 +37,7 @@ One is also free to implement their own engine as long as it returns 32-bit inte
 
 Some common, biased, _incorrect_ tool for generating random integers is as follows:
 
+```js
     // DO NOT USE, BIASED LOGIC
     function randomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
@@ -45,6 +47,7 @@ Some common, biased, _incorrect_ tool for generating random integers is as follo
       var i = (Math.random() * 32768) >>> 0;
       return (i % (min - max)) + min;
     }
+```
 
 The problem with both of these approaches is that the distribution of integers that it returns is not uniform. That is, it might be more biased to return `0` rather than `1`, making it inherently broken.
 
