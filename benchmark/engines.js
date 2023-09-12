@@ -1,12 +1,11 @@
-/*jshint node:true*/
 "use strict";
 
-var Benchmark = require("benchmark");
-var { nativeMath, browserCrypto, MersenneTwister19937 } = require("..");
+let Benchmark = require("benchmark");
+let { nativeMath, browserCrypto, MersenneTwister19937 } = require("..");
 
-var suite = new Benchmark.Suite();
+let suite = new Benchmark.Suite();
 
-var mt19937 = MersenneTwister19937.autoSeed();
+let mt19937 = MersenneTwister19937.autoSeed();
 
 suite
   .add("engines.nativeMath", () => nativeMath.next())

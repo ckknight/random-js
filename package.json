@@ -23,7 +23,7 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "@types/jest": "^29.5.4",
-    "@types/node": "^20.6.0",
+    "@types/node": "20.6.0",
     "benchmark": "^2.1.4",
     "jest": "^29.7.0",
     "prettier": "^3.0.3",
@@ -33,17 +33,17 @@
     "rollup-plugin-typescript2": "^0.35.0",
     "terser": "^5.19.4",
     "ts-jest": "^29.1.1",
-    "eslint": "^8.49.0",
+    "eslint": "8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^5.2.2"
+    "typescript": "5.2.2"
   },
   "scripts": {
     "clean": "rimraf dist",
     "build:umd": "rollup -c rollup.config.es3.js --format umd -o dist/random-js.umd.js --name Random -m",
     "build:esm": "rollup -c rollup.config.js --format esm --sourcemap true -o dist/random-js.esm.js",
     "prebuild": "yarn clean",
-    "build": "yarn build:umd && yarn build:esm",
+    "build": "yarn build:umd --bundleConfigAsCjs && yarn build:esm --bundleConfigAsCjs",
     "minify": "terser --source-map content=dist/random-js.umd.js.map --compress --mangle --output dist/random-js.umd.min.js dist/random-js.umd.js",
     "postbuild": "yarn minify",
     "benchmark": "for k in benchmark/*.js; do node $k; done",

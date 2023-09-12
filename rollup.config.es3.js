@@ -6,7 +6,7 @@ export default {
     typescript({
       tsconfigOverride: {
         compilerOptions: {
-          target: "es3",
+          target: "es5",
           declaration: false,
           declarationMap: false
         },

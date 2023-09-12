@@ -305,7 +305,7 @@ describe("Random", () => {
       uint53,
       uint53Full
     };
-    (Object.keys(SIMPLE_METHODS) as Array<keyof typeof SIMPLE_METHODS>).forEach(
+    (Object.keys(SIMPLE_METHODS) as (keyof typeof SIMPLE_METHODS)[]).forEach(
       methodName => {
         const distribution: Distribution = SIMPLE_METHODS[methodName];
         describe(methodName, () => {
