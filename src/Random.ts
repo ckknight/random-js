@@ -7,6 +7,8 @@ import { int32 } from "./distribution/int32";
 import { int53 } from "./distribution/int53";
 import { int53Full } from "./distribution/int53Full";
 import { integer } from "./distribution/integer";
+import { max } from "./distribution/max";
+import { min } from "./distribution/min";
 import { pick } from "./distribution/pick";
 import { real } from "./distribution/real";
 import { realZeroToOneExclusive } from "./distribution/realZeroToOneExclusive";
@@ -87,6 +89,24 @@ export class Random {
    */
   public integer(min: number, max: number): number {
     return integer(min, max)(this.engine);
+  }
+
+  /**
+   * Returns the maximum of the values specified within [min, max]
+   * @param min The minimum integer value, inclusive. No less than -0x20000000000000. Discarded.
+   * @param max The maximum integer value, inclusive. No greater than 0x20000000000000.
+   */
+  public max(minimum: number, maximum: number): number {
+    return max(minimum, maximum)(this.engine);
+  }
+
+  /**
+   * Returns the minimum of the values specified within [min, max]
+   * @param min The minimum integer value, inclusive. No less than -0x20000000000000.
+   * @param max The maximum integer value, inclusive. No greater than 0x20000000000000. Discarded.
+   */
+  public min(minimum: number, maximum: number): number {
+    return min(minimum, maximum)(this.engine);
   }
 
   /**

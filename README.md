@@ -12,7 +12,7 @@ Upgrading from 1.0 to 2.0 is a major, breaking change. For the most part, the wa
 
 ## Why is this needed?
 
-Despite `Math.random()` being capable of producing numbers within [0, 1), there are a few downsides to doing so:
+Despite `Math.random()` being capable of producing numbers within [0, 1], there are a few downsides to doing so:
 
 - It is inconsistent between engines as to how many bits of randomness:
   - Internet Explorer: 53 bits

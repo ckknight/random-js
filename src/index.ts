@@ -3,6 +3,7 @@ export * from "./engine/browserCrypto";
 export * from "./engine/nativeMath";
 export * from "./engine/MersenneTwister19937";
 export * from "./engine/nodeCrypto";
+// export * from "./engine/xorgens4096"; //commented out for now, engine is still WIP
 export * from "./types";
 export * from "./distribution/bool";
 export * from "./distribution/date";
