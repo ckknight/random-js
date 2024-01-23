@@ -1,8 +1,10 @@
 # Random.js
 
 [![Build Status](https://travis-ci.org/ckknight/random-js.svg?branch=master)](https://travis-ci.org/ckknight/random-js)
+[![CDNJS](https://img.shields.io/cdnjs/v/random-js.svg)](https://cdnjs.com/libraries/random-js)
 
 This is designed to be a mathematically correct random number generator library for JavaScript.
+You can use it several times to get familiar with the parameters.
 
 Inspiration was primarily taken from C++11's `<random>`.
 
@@ -85,7 +87,7 @@ Any object that fulfills that interface is an `Engine`.
 - `mt.discard(count)`: Discard `count` random values. More efficient than running `mt.next()` repeatedly.
 - `mt.getUseCount()`: Return the number of times the engine has been used plus the number of discarded values.
 
-One can seed a Mersenne Twister with the same value (`MersenneTwister19937.seed(value)`) or values (`MersenneTwister19937.seedWithArray(array)`) and discard the number of uses (`mt.getUseCount()`) to achieve the exact same state.
+One can seed a Mersenne Twister with the same value (`MersenneTwister19937.seed(value)`) or values (`MersenneTwister19937.seedWithArray(array)`) and discard the number of uses (`mt.discard(count)`) to achieve the exact same state.
 
 If you wish to know the initial seed of `MersenneTwister19937.autoSeed()`, it is recommended to use the `createEntropy()` function to create the seed manually (this is what `autoSeed` does under-the-hood).
 
