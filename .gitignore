@@ -3,3 +3,7 @@ node_modules
 coverage
 .rpt2_cache
 dist
+
+yarn.lock
+package-lock.json
+bun.lockb

@@ -1,0 +1,28 @@
+# MD013/line-length - Line length
+MD013:
+  # Number of characters
+  line_length: 450
+  # Number of characters for headings
+  heading_line_length: 450
+  # Number of characters for code blocks
+  code_block_line_length: 450
+  # Include code blocks
+  code_blocks: true
+  # Include tables
+  tables: true
+  # Include headings
+  headings: true
+  # Include headings
+  headers: true
+  # Strict length checking
+  strict: false
+  # Stern length checking
+  stern: false
+
+# MD037/no-space-in-emphasis - Spaces inside emphasis markers
+MD037: false
+
+# MD046/code-block-style - Code block style
+MD046:
+  # Block style
+  style: "consistent"

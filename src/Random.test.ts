@@ -7,6 +7,8 @@ import { int32 } from "./distribution/int32";
 import { int53 } from "./distribution/int53";
 import { int53Full } from "./distribution/int53Full";
 import { integer } from "./distribution/integer";
+import { max } from "./distribution/max";
+import { min } from "./distribution/min";
 import { pick } from "./distribution/pick";
 import { real } from "./distribution/real";
 import { realZeroToOneExclusive } from "./distribution/realZeroToOneExclusive";
@@ -34,6 +36,8 @@ jest.mock("./distribution/uuid4");
 jest.mock("./distribution/string");
 jest.mock("./distribution/hex");
 jest.mock("./distribution/date");
+jest.mock("./distribution/max");
+jest.mock("./distribution/min");
 jest.mock("./distribution/int32");
 jest.mock("./distribution/int53");
 jest.mock("./distribution/int53Full");
@@ -295,6 +299,38 @@ describe("Random", () => {
       });
     });
 
+    describe("max", () => {
+      it("calls max distribution", () => {
+        const minimum = 1234;
+        const maximum = 2345;
+        const dummy = 1337;
+        const spy = jest.fn().mockReturnValue(dummy);
+        (max as jest.Mock).mockReturnValue(spy);
+
+        const actual = random.max(minimum, maximum);
+
+        expect(max).toHaveBeenCalledWith(minimum, maximum);
+        expect(spy).toHaveBeenCalledWith(engine);
+        expect(actual).toBe(dummy);
+      });
+    });
+
+    describe("min", () => {
+      it("calls min distribution", () => {
+        const minimum = 1234;
+        const maximum = 2345;
+        const dummy = 1337;
+        const spy = jest.fn().mockReturnValue(dummy);
+        (min as jest.Mock).mockReturnValue(spy);
+
+        const actual = random.min(minimum, maximum);
+
+        expect(min).toHaveBeenCalledWith(minimum, maximum);
+        expect(spy).toHaveBeenCalledWith(engine);
+        expect(actual).toBe(dummy);
+      });
+    });
+
     const SIMPLE_METHODS = {
       int32,
       int53,
@@ -305,7 +341,7 @@ describe("Random", () => {
       uint53,
       uint53Full
     };
-    (Object.keys(SIMPLE_METHODS) as Array<keyof typeof SIMPLE_METHODS>).forEach(
+    (Object.keys(SIMPLE_METHODS) as (keyof typeof SIMPLE_METHODS)[]).forEach(
       methodName => {
         const distribution: Distribution = SIMPLE_METHODS[methodName];
         describe(methodName, () => {

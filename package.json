@@ -3,7 +3,7 @@
   "description": "A mathematically correct random number generator library for JavaScript.",
   "version": "2.1.0",
   "author": {
-    "name": "Cameron Kenneth Knight",
+    "name": "Summer Knight",
     "email": "ckknight@gmail.com"
   },
   "keywords": [
@@ -22,27 +22,26 @@
   ],
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@types/jest": "^24.0.5",
-    "@types/node": "^11.9.4",
+    "@types/jest": "^29.5.5",
+    "@types/node": "20.6.2",
     "benchmark": "^2.1.4",
-    "jest": "^24.1.0",
-    "prettier": "^1.16.4",
-    "rimraf": "^2.6.3",
-    "rollup": "^1.2.1",
-    "rollup-plugin-typescript": "^1.0.0",
-    "rollup-plugin-typescript2": "^0.19.2",
-    "terser": "^3.16.1",
-    "ts-jest": "^23.10.5",
-    "tslint": "^5.12.1",
+    "jest": "^29.7.0",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.1",
+    "rollup": "^3.29.2",
+    "@rollup/plugin-typescript": "^11.1.3",
+    "rollup-plugin-typescript2": "^0.35.0",
+    "terser": "^5.19.4",
+    "ts-jest": "^29.1.1",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.3.3"
+    "typescript": "^5.2.2"
   },
   "scripts": {
     "clean": "rimraf dist",
     "build:umd": "rollup -c rollup.config.es3.js --format umd -o dist/random-js.umd.js --name Random -m",
     "build:esm": "rollup -c rollup.config.js --format esm --sourcemap true -o dist/random-js.esm.js",
     "prebuild": "yarn clean",
-    "build": "yarn build:umd && yarn build:esm",
+    "build": "yarn build:umd --bundleConfigAsCjs && yarn build:esm --bundleConfigAsCjs",
     "minify": "terser --source-map content=dist/random-js.umd.js.map --compress --mangle --output dist/random-js.umd.min.js dist/random-js.umd.js",
     "postbuild": "yarn minify",
     "benchmark": "for k in benchmark/*.js; do node $k; done",
